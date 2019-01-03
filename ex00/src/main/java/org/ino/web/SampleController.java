@@ -18,7 +18,5 @@ public class SampleController {
 	@RequestMapping("doB")
 	public void doB() {
 		logger.info("doB called..........");
-
 	}
-
 }
