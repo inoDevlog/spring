@@ -28,7 +28,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void update(BoardVO vo) throws Exception {
-		session.update(namespace + "update", vo);
+		session.update(namespace + ".update", vo);
 	}
 
 	@Override

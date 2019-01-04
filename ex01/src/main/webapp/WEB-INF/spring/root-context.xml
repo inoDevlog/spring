@@ -25,6 +25,6 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<context:component-scan base-package="org.ino.persistence"></context:component-scan>
+	<context:component-scan base-package="org.ino.service"></context:component-scan>
 			
 </beans>
