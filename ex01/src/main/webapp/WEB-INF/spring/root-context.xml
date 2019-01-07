@@ -26,5 +26,6 @@
 	</bean>
 	
 	<context:component-scan base-package="org.ino.service"></context:component-scan>
+	<context:component-scan base-package="org.ino.persistence"></context:component-scan>
 			
 </beans>
