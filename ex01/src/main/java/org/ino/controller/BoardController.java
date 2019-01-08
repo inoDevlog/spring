@@ -63,4 +63,22 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 
+	// 원래의 게시물 데이터를 읽어와서 Model에 넣어서 전달
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modifyGET(int bno, Model model) throws Exception {
+		model.addAttribute(service.read(bno));
+
+	}
+
+	// 실제 수정 작업 처리. 리턴 타입은 등록이나 삭제와 동일하게 처리
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
+		logger.info("modify post..........");
+
+		service.modify(board);
+		rttr.addFlashAttribute("msg", "Success");
+
+		return "redirect:/board/listAll";
+	}
+
 }
