@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.ino.domain.BoardVO;
+import org.ino.domain.Criteria;
 import org.ino.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,4 +59,16 @@ public class BoardDAOTest {
 		}
 	}
 
+	@Test
+	public void testListCriteria() throws Exception {
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+
+		List<BoardVO> list = dao.listCriteria(cri);
+
+		for (BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
+		}
+	}
 }
