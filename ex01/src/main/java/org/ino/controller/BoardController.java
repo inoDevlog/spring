@@ -94,17 +94,23 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exception {
+	public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 
 		logger.info(cri.toString());
 
 		model.addAttribute("list", service.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		//pageMaker.setTotalCount(131);
-		
+		// pageMaker.setTotalCount(131);
+
 		pageMaker.setTotalCount(service.listCountCriteria(cri));
 
 		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception {
+
+		model.addAttribute(service.read(bno));
 	}
 }
