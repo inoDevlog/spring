@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.ino.domain.BoardVO;
 import org.ino.domain.Criteria;
+import org.ino.domain.SearchCriteria;
 import org.ino.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -88,9 +89,30 @@ public class BoardDAOTest {
 	public void testURI2() throws Exception {
 
 		UriComponents uriComponents = UriComponentsBuilder.newInstance().path("/board/read").queryParam("bno", 12)
-				.queryParam("perPageNum", 20).build().expand("board","read").encode();
+				.queryParam("perPageNum", 20).build().expand("board", "read").encode();
 
 		logger.info("/board/read?bno=12&perPageNum=20");
 		logger.info(uriComponents.toString());
+	}
+
+	@Test
+	public void testDynamic1() throws Exception {
+
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("New");
+		cri.setSearchType("t");
+
+		logger.info("====================");
+
+		List<BoardVO> list = dao.listSearch(cri);
+
+		for (BoardVO boardVO : list) {
+			logger.info(boardVO.getBno() + ":" + boardVO.getTitle());
+		}
+
+		logger.info("====================");
+
+		logger.info("COUNT: " + dao.listSearchCount(cri));
 	}
 }
