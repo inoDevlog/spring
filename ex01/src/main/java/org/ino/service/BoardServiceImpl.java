@@ -6,12 +6,13 @@ import javax.inject.Inject;
 
 import org.ino.domain.BoardVO;
 import org.ino.domain.Criteria;
+import org.ino.domain.SearchCriteria;
 import org.ino.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
+
 	@Inject
 	private BoardDAO dao;
 
@@ -48,5 +49,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int listCountCriteria(Criteria cri) throws Exception {
 		return dao.countPaging(cri);
+	}
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+		return dao.listSearch(cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		return dao.listSearchCount(cri);
 	}
 }
