@@ -23,7 +23,6 @@ public class SampleController {
 		vo.setFirstName("길동");
 		vo.setLastName("홍");
 		vo.setMno(123);
-
 		return vo;
 	}
 
@@ -31,7 +30,7 @@ public class SampleController {
 	public List<SampleVO> sendList() {
 
 		List<SampleVO> list = new ArrayList<>();
-		
+
 		for (int i = 0; i < 10; i++) {
 			SampleVO vo = new SampleVO();
 			vo.setFirstName("길동");
@@ -40,7 +39,5 @@ public class SampleController {
 			list.add(vo);
 		}
 		return list;
-
 	}
-
 }
